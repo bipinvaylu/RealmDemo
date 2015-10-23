@@ -2,6 +2,7 @@ import Cocoa
 import Realm
 import SwiftyJSON
 
+
 public class Lion: RLMObject {
     dynamic var id = 0
     dynamic var name = ""
@@ -18,7 +19,7 @@ public class Lion: RLMObject {
             let name = lionJson["name"].string {
                 self.id = id
                 self.name = name
-            }
+        }
     }
     
     override public static func primaryKey() -> String? {
@@ -63,7 +64,9 @@ public class Trainer: RLMObject {
                 self.id = id
                 self.name = name
                 for lionJson in lionJsonArray {
-                        self.lions.addObject(Lion(lionJson: lionJson))
+                    if let lion = Lion(lionJson: lionJson) as Lion? {
+                        self.lions.addObject(lion)
+                    }
                 }
         }
     }
@@ -126,3 +129,5 @@ public class Trainer: RLMObject {
         
     }
 }
+
+
