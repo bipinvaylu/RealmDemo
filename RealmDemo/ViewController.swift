@@ -118,7 +118,11 @@ class ViewController: NSViewController {
         
 //        print("ServerTrack : \(serverTrack.toJSON())")
         serverTrack.save()
-        ServerTrack.printAllServerTrack()
+        
+        let tracks = ServerTrack.getAllServerTracks()
+        for track in tracks {
+            print(track.toJSON())
+        }
         
         
         //ServerTrackMetadata

@@ -103,14 +103,6 @@ public class Trainer: RLMObject {
     }
     
     static public func printTrainerByLionName(names: [String]) {
-        var inStr = ""
-        for k in 0..<names.count {
-            inStr = inStr + "'\(names[k])'"
-            if k+1 < names.count {
-                inStr = inStr + ","
-            }
-        }
-        
         let predicate = NSPredicate(format: "name IN %@",names)
         print("predicate: \(predicate.description)")
         let objects = Trainer.objectsWithPredicate(predicate)
